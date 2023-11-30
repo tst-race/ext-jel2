@@ -1,0 +1,18 @@
+if [ -z $1 ];
+then
+    echo "We need the coverity token: e.g. "
+    echo  "./jel-submit tHiSiSnOtMyKeY"
+    echo  "Ask Ian: iam@csl.sri.com"
+    exit 1
+else
+   COVERITY_TOKEN=$1
+fi
+
+rm jel.tgz
+tar czvf jel.tgz cov-int
+curl --form token=${COVERITY_TOKEN} \
+  --form email=iam@csl.sri.com \
+  --form file=@jel.tgz \
+  --form version="Final DEFIANCE Version" \
+  --form description="Final DEFIANCE Version" \
+  https://scan.coverity.com/builds?project=JPEG+Embedding+Library

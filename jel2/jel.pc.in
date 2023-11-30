@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: JEL
+Description: JPEG Embedding Library
+Version: @VERSION@
+Libs: -L${libdir} -ljel -ljpeg
+Cflags: -I${includedir} -I${includedir}/jel 
+
