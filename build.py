@@ -39,8 +39,8 @@ if __name__ == "__main__":
     builder.install_packages(
         args,
         [
-            ("autoconf", "2.69*", True),
-            ("libjpeg-turbo8-dev", "2.0.3*", True),
+            ("autoconf"),
+            ("libjpeg-turbo8-dev"),
         ],
     )
 
