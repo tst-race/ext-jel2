@@ -39,8 +39,8 @@ if __name__ == "__main__":
     builder.install_packages(
         args,
         [
-            ("autoconf"),
-            ("libjpeg-turbo8-dev"),
+            ("autoconf", None, False),
+            ("libjpeg-turbo8-dev", None, True),
         ],
     )
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     logging.root.info(f"{env}")
     builder.copy(args, f"{args.code_dir}/jel2", args.source_dir)
     builder.execute(args, ["autoreconf", "-fvi"], cwd=f"{args.source_dir}/jel2", env=env)
-    builder.execute(args, ["./configure", f"--prefix="], cwd=f"{args.source_dir}/jel2")
+    builder.execute(args, ["./configure", f"--prefix=", f"--host=x86_64"], cwd=f"{args.source_dir}/jel2")
 
     logging.root.info("Building")
     builder.execute(args, ["make",], cwd=f"{args.source_dir}/jel2", env=env)
