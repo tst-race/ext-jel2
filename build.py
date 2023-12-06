@@ -39,20 +39,21 @@ if __name__ == "__main__":
     builder.install_packages(
         args,
         [
-            ("autoconf", "2.69*", True),
-            ("libjpeg-turbo8-dev", "2.0.3*", True),
+            ("autoconf", None, False),
+            ("libjpeg-turbo8-dev", None, True),
         ],
     )
 
     source_dir = os.path.join(args.source_dir, f"jel2")
     env = builder.create_standard_envvars(args)
-
+    env["CPPFLAGS"] = env.get("CPPFLAGS", "") + " -I/usr/include/"
     logging.root.info("Configuring build")
     logging.root.info(f"{args}")
     logging.root.info(f"{env}")
     builder.copy(args, f"{args.code_dir}/jel2", args.source_dir)
     builder.execute(args, ["autoreconf", "-fvi"], cwd=f"{args.source_dir}/jel2", env=env)
-    builder.execute(args, ["./configure", f"--prefix="], cwd=f"{args.source_dir}/jel2")
+
+    builder.execute(args, ["./configure", f"--prefix=", f"--host=x86_64"], cwd=f"{args.source_dir}/jel2", env=env)
 
     logging.root.info("Building")
     builder.execute(args, ["make",], cwd=f"{args.source_dir}/jel2", env=env)
