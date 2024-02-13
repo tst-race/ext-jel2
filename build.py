@@ -33,16 +33,16 @@ def get_cli_arguments():
 
 def build_android(args, env):
     env["JPEGDIR"]="/build/cache/jel2/1.0.0-1/android-arm64-v8a/source/jel2/jpeg-6b"
+    target = "x86_64-linux-android" if "x86" in args.target else "aarch64-linux-android"
     
     # Compile dependencies
-    target = "x86_64-linux-android" if "x86" in args.target else "aarch64-linux-android"
     builder.execute(
         args,
         [
             "./configure",
-            f"--host=aarch64-linux-android",
+            f"--host={target}",
             f"--target={target}",
-            f"--prefix=/android/arm64-v8a",
+            f"--prefix=",
         ],
         cwd=f"{args.source_dir}/jel2/jpeg-6b",
         env=env
@@ -96,9 +96,9 @@ def build_android(args, env):
         args,
         [
             "./configure",
-            f"--prefix=/android/arm64-v8a",
+            f"--prefix=",
             f"--host=x86_64",
-            f"--target=aarch64-linux-android"
+            f"--target={target}"
         ],
         cwd=f"{args.source_dir}/jel2",
         env=env
