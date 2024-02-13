@@ -33,6 +33,8 @@ def get_cli_arguments():
 
 if __name__ == "__main__":
     args = get_cli_arguments()
+    print(f"ARGS: {args}")
+
     builder.make_dirs(args)
     builder.setup_logger(args)
 
@@ -51,9 +53,25 @@ if __name__ == "__main__":
     logging.root.info(f"{args}")
     logging.root.info(f"{env}")
     builder.copy(args, f"{args.code_dir}/jel2", args.source_dir)
-    builder.execute(args, ["autoreconf", "-fvi"], cwd=f"{args.source_dir}/jel2", env=env)
+    builder.execute(
+        args,
+        [
+            "autoreconf", "-fvi"
+        ],
+        cwd=f"{args.source_dir}/jel2",
+        env=env
+    )
 
-    builder.execute(args, ["./configure", f"--prefix=", f"--host=x86_64"], cwd=f"{args.source_dir}/jel2", env=env)
+    builder.execute(
+        args,
+        [
+            "./configure",
+            f"--prefix=",
+            f"--host=x86_64"
+        ],
+        cwd=f"{args.source_dir}/jel2",
+        env=env
+    )
 
     logging.root.info("Building")
     builder.execute(args, ["make",], cwd=f"{args.source_dir}/jel2", env=env)
