@@ -24,8 +24,8 @@ if DEBUG
 AM_CFLAGS = -ggdb -g3 -O0
 AM_CXXFLAGS = -ggdb -g3 -O0
 else
-AM_CFLAGS = -Ofast -march=native
-AM_CXXFLAGS = -Ofast -march=native
+AM_CFLAGS = -Ofast
+AM_CXXFLAGS = -Ofast
 endif
 
 if NO_JPEGDIR
