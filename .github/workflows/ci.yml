@@ -13,5 +13,3 @@ permissions:
 jobs:
   build:
     uses: tst-race/ext-build-action/.github/workflows/build-ext.yml@v1
-    with:
-        builder-tag: v1.0.2
