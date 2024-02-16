@@ -1310,7 +1310,7 @@ int ijel_stuff_message(jel_config *cfg, int chan) {
   int msglen = cfg->data_lengths[chan];
   int nbits_in, msg_nbits;
   int first = TRUE;  // The next MCU we process will be the first one...
-  int mcu_count = 0;
+  /* int mcu_count = 0; */
   int all_mcus = 0;
   int nb;
 
@@ -1534,7 +1534,7 @@ else
 	  if (jel_verbose) maybe_describe_mcu(cfg, mcu, all_mcus, nm, "After");
 
 	  nbits_in += nb;
-	  if ( nb > 0 ) mcu_count++;
+	  /* if ( nb > 0 ) mcu_count++; */
 	  /* Don't use this MCU unless it's well-behaved; If random MCU
 	   * selection is enabled, also test to see whether this is an
 	   * MCU we want to modify. */
@@ -1680,7 +1680,7 @@ int ijel_unstuff_message(jel_config *cfg, int chan) {
   // Really an offset into the cfg->data buffer, but this is set up to
   // point to each "new" segment:
   unsigned char *message = cfg->data_ptr[chan];
-  int mcu_count = 0;
+  /* int mcu_count = 0; */
   int all_mcus = 0;
   int msg_nbytes = 0;
   int msg_nbits = 0;
@@ -1832,7 +1832,7 @@ int ijel_unstuff_message(jel_config *cfg, int chan) {
 	  if (jel_verbose) maybe_describe_mcu(cfg, mcu, all_mcus, nm, "After");
 
 	  nbits_out += nb;
-	  if ( nb > 0 ) mcu_count++;
+	  /* if ( nb > 0 ) mcu_count++; */
 
 	  if ( !got_length ) {
 	    if (jel_verbose) {
@@ -2103,7 +2103,7 @@ int ijel_set_lsbs(jel_config *cfg, int *mask) {
    * these variables! */
   int compnum = COMP; /* Component (0 = luminance, 1 = U, 2 = V) */
   /* need to be able to know what went wrong in deployments */
-  int blk_y, bheight, bwidth, offset_y, k;
+  int blk_y, bheight, bwidth, offset_y;
   //  JDIMENSION blocknum, MCU_cols;
   JDIMENSION blocknum;
   jvirt_barray_ptr comp_array = coef_arrays[compnum];
@@ -2116,7 +2116,6 @@ int ijel_set_lsbs(jel_config *cfg, int *mask) {
 
   compptr = cinfo->comp_info + compnum;
 
-  k = 0;
   /* Now we walk through the MCUs of the JPEG image. */
   for (blk_y = 0; blk_y < bheight;
        blk_y += compptr->v_samp_factor) {
@@ -2135,7 +2134,6 @@ int ijel_set_lsbs(jel_config *cfg, int *mask) {
          * byte: */
         mcu =(JCOEF*) row_ptrs[offset_y][blocknum];
 	ijel_set_mcu_lsbs(mask, mcu);
-	k++;
       }
     }
   }

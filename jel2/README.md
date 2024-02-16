@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/Destini-CSL/jel.svg?branch=master)](https://travis-ci.org/Destini-CSL/jel)
+[![Build Status](https://travis-ci.org/SRI-CSL/jel.svg?branch=master)](https://travis-ci.org/SRI-CSL/jel)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/2535/badge.svg)](https://scan.coverity.com/projects/2535)
 
 
@@ -19,7 +19,7 @@ Transcoding-Resistant Image Steganography"*
 for a detailed explanation on what this tool does and how it does it.
 A copy can be found here: 
 ```
-https://github.com/Destini-CSL/jel/blob/master/doc/jpegsteg.pdf?raw=true
+https://github.com/SRI-CSL/jel/blob/master/doc/jpegsteg.pdf?raw=true
 ```
 
 General Compilation
@@ -45,8 +45,3 @@ To make a Debian package:
 dpkg-buildpackage -b -us -uc
 ```
 
-
-Note
-------
-RACE Compile image
-apt-get install autoconf libjpeg-turbo8-dev

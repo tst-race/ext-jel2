@@ -13,9 +13,9 @@ PROJECT_GIT_STAMPS = \
 ACLOCAL_AMFLAGS = -I config-aux --install
 
 if NO_JPEGDIR
-AM_CPPFLAGS = -Wall -DECC -DJEL_VERSION='"$(VERSION)"' -I. -I$(srcdir)/include -I$(srcdir)/rscode -I/usr/local/  $(PROJECT_GIT_STAMPS)
+AM_CPPFLAGS = -Werror -Wall -DECC -DJEL_VERSION='"$(VERSION)"' -I. -I$(srcdir)/include -I$(srcdir)/rscode  $(PROJECT_GIT_STAMPS)
 else
-AM_CPPFLAGS = -Wall -DECC -DJEL_VERSION='"$(VERSION)"' -I$(JPEGDIR) -I. -I$(srcdir)/include -I$(srcdir)/rscode  $(PROJECT_GIT_STAMPS)
+AM_CPPFLAGS = -Werror -Wall -DECC -DJEL_VERSION='"$(VERSION)"' -I$(JPEGDIR) -I. -I$(srcdir)/include -I$(srcdir)/rscode  $(PROJECT_GIT_STAMPS)
 endif
 
 CFLAGS = -O3

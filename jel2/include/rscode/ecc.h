@@ -18,7 +18,7 @@
  * along with Rscode.  If not, see <http://www.gnu.org/licenses/>.
  *
  * 
- *  Destini JEL Rider:
+ *  SRI JEL Rider:
  *  Henry Minsky grants the users of the JPEG Embedding Library a
  *  royalty-free license to modify and redistribute the software package
  *  "rscode error-correction coding library", in binary or source

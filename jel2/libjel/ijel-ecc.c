@@ -474,7 +474,7 @@ unsigned char *ijel_decode_ecc_nolength(unsigned char *ecc, int ecclen, int leng
   }
 
   /* If plain_len is not equal to length, then something's wrong: */
-  //  assert(plain_len <= length);
+  assert(plain_len <= length);
 
   return(out);
 }
