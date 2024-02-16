@@ -13,3 +13,6 @@ permissions:
 jobs:
   build:
     uses: tst-race/ext-build-action/.github/workflows/build-ext.yml@v1
+    with:
+      skip-android-x86_64: true
+ 
